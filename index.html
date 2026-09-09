@@ -50,7 +50,7 @@
 </head>
 <body class="bg-black text-white antialiased selection:bg-white selection:text-black">
 <!-- Top Sticky Navigation Bar -->
-<header class="fixed top-0 left-0 w-full z-50 bg-black/85 backdrop-blur-md border-b border-white/10 px-5 md:px-10 py-4 flex items-center justify-between transition-all duration-300">
+<header id="site-header" class="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 flex items-center justify-between transition-all duration-300 bg-gradient-to-b from-black/45 via-black/15 to-transparent">
 <!-- Left: Navigation / Menu trigger -->
 <div class="flex items-center space-x-6">
 <button aria-label="Toggle Navigation" id="menu-toggle" onclick="openMenu()" class="text-white hover:text-neutral-300 p-1 flex items-center focus:outline-none transition-colors group">
@@ -340,6 +340,23 @@
 </footer>
 <!-- Interactions Script -->
 <script>
+  (function () {
+    var header = document.getElementById('site-header');
+    var scrolledClasses = ['bg-black/80', 'backdrop-blur-md', 'border-b', 'border-white/10', 'py-4'];
+    var topClasses = ['py-5', 'bg-gradient-to-b', 'from-black/45', 'via-black/15', 'to-transparent'];
+    function sync() {
+      if (window.scrollY > 40) {
+        header.classList.remove.apply(header.classList, topClasses);
+        header.classList.add.apply(header.classList, scrolledClasses);
+      } else {
+        header.classList.remove.apply(header.classList, scrolledClasses);
+        header.classList.add.apply(header.classList, topClasses);
+      }
+    }
+    sync();
+    window.addEventListener('scroll', sync, { passive: true });
+  })();
+
   function openMenu() {
     const o = document.getElementById('menu-overlay');
     const p = document.getElementById('menu-panel');
