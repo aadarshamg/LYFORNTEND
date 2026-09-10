@@ -68,18 +68,11 @@
   .frame {
     position: fixed;
     inset: clamp(12px, 1.9vw, 26px);
-    border: 1px solid rgba(244, 241, 234, 0.18);
+    border: 1px solid rgba(244, 241, 234, 0.16);
+    border-radius: 18px;
     z-index: 5;
     pointer-events: none;
   }
-  .frame::before, .frame::after {
-    content: "";
-    position: absolute;
-    width: 12px; height: 12px;
-    border: 1px solid var(--gold);
-  }
-  .frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
-  .frame::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
 
   /* ---------- Vertical edge label ---------- */
   .vertical {
@@ -138,11 +131,13 @@
     letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--muted);
-    padding: 0.55rem 0.95rem;
-    border: 1px solid var(--line);
-    background: rgba(10, 9, 8, 0.28);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(244, 241, 234, 0.22);
+    background: rgba(244, 241, 234, 0.08);
+    backdrop-filter: blur(12px) saturate(1.5);
+    -webkit-backdrop-filter: blur(12px) saturate(1.5);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
   .status .dot {
     width: 6px; height: 6px; border-radius: 50%;
@@ -208,28 +203,68 @@
   }
 
   .cta {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 1.05rem 2.4rem;
-    background: var(--ink);
-    color: #050505;
+    gap: 0.85rem;
+    padding: 1.15rem 2.75rem;
+    border-radius: 999px;
+    overflow: hidden;
+    color: var(--ink);
     font-size: 0.68rem;
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    border: 1px solid var(--ink);
-    transition: background .4s ease, color .4s ease, transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+    background: rgba(244, 241, 234, 0.1);
+    border: 1px solid rgba(244, 241, 234, 0.28);
+    backdrop-filter: blur(16px) saturate(1.8);
+    -webkit-backdrop-filter: blur(16px) saturate(1.8);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.45),
+      inset 0 -14px 24px rgba(0, 0, 0, 0.18),
+      0 12px 34px -10px rgba(0, 0, 0, 0.5);
+    transition: transform .45s cubic-bezier(0.22,1,0.36,1), box-shadow .45s ease, border-color .45s ease, background .45s ease, color .45s ease;
   }
-  .cta svg { width: 13px; height: 13px; transition: transform .4s ease; }
+  /* glossy liquid highlight */
+  .cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    background: linear-gradient(160deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.1) 32%, rgba(255,255,255,0) 58%);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  /* sweeping sheen */
+  .cta::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 45%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent);
+    transform: skewX(-18deg);
+    transition: left .7s cubic-bezier(0.22,1,0.36,1);
+    pointer-events: none;
+  }
+  .cta > * { position: relative; z-index: 2; }
+  .cta svg { width: 13px; height: 13px; transition: transform .45s ease; }
   .cta:hover {
-    background: transparent;
-    color: var(--gold);
-    border-color: var(--gold);
-    transform: translateY(-2px);
-    box-shadow: 0 20px 46px -18px rgba(201, 162, 75, 0.6);
+    transform: translateY(-3px);
+    color: #fff;
+    border-color: rgba(201, 162, 75, 0.75);
+    background: rgba(201, 162, 75, 0.16);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -14px 26px rgba(0, 0, 0, 0.2),
+      0 22px 50px -14px rgba(201, 162, 75, 0.55);
   }
+  .cta:hover::after { left: 120%; }
   .cta:hover svg { transform: translateX(4px); }
+  .cta:active { transform: translateY(-1px) scale(0.99); }
   .cta:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
 
   .aside-note {
@@ -367,7 +402,7 @@
       </p>
       <div class="a from-right d7">
         <a class="cta" href="https://www.leyrosperfume.com/" target="_blank" rel="noopener">
-          Shop Leyros Now
+          <span>Shop Leyros Now</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
