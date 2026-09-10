@@ -94,42 +94,11 @@
   }
   .row-bottom { align-items: flex-end; margin-top: auto; }
 
-  .brand .crest {
-    display: block;
-    font-size: 0.54rem;
-    letter-spacing: 0.46em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
-  }
   .brand .word {
     font-size: 0.98rem;
     letter-spacing: 0.36em;
     font-weight: 500;
     text-transform: uppercase;
-  }
-
-  .status {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.56rem;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 0.6rem 1.1rem;
-    border-radius: 999px;
-    border: 1px solid rgba(244, 241, 234, 0.22);
-    background: rgba(244, 241, 234, 0.08);
-    backdrop-filter: blur(12px) saturate(1.5);
-    -webkit-backdrop-filter: blur(12px) saturate(1.5);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  }
-  .status .dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 0 0 rgba(201, 162, 75, 0.6);
-    animation: ping 2.4s ease-out infinite;
   }
 
   /* ---------- Hero band ---------- */
@@ -141,18 +110,6 @@
     gap: clamp(2rem, 6vw, 5rem);
     padding: clamp(2.5rem, 8vw, 5rem) 0;
   }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.85rem;
-    font-size: 0.6rem;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin: 0 0 1.4rem;
-  }
-  .eyebrow::before { content: ""; width: 40px; height: 1px; background: var(--gold); opacity: 0.6; }
 
   h1 {
     font-family: 'Outfit', sans-serif;
@@ -304,10 +261,6 @@
     0%, 100% { opacity: 0.65; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.12); }
   }
-  @keyframes ping {
-    0% { box-shadow: 0 0 0 0 rgba(201, 162, 75, 0.55); }
-    70%, 100% { box-shadow: 0 0 0 9px rgba(201, 162, 75, 0); }
-  }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -332,17 +285,12 @@
 <main class="stage">
   <header class="row row-top">
     <a class="brand a from-up d1" href="https://www.leyrosperfume.com/">
-      <span class="crest">✦ Leyros ✦</span>
       <span class="word">Leyros Perfume</span>
     </a>
-    <span class="status a from-up d2">
-      <span class="dot"></span> Upgrade in progress
-    </span>
   </header>
 
   <section class="hero">
     <div>
-      <p class="eyebrow a from-left d3">Maison Notice</p>
       <h1 class="a from-left d4">
         <span class="light">We’re Refining</span>
         <em>the Experience.</em>
