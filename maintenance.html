@@ -94,12 +94,30 @@
   }
   .row-bottom { align-items: flex-end; margin-top: auto; }
 
-  .brand .word {
-    font-size: 0.98rem;
-    letter-spacing: 0.36em;
-    font-weight: 500;
-    text-transform: uppercase;
+  .brand {
+    position: relative;
+    padding-bottom: 0.7rem;
   }
+  .brand .word {
+    font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+    letter-spacing: 0.4em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 24px rgba(201, 162, 75, 0.35), 0 2px 20px rgba(0, 0, 0, 0.6);
+  }
+  .brand::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 44px;
+    height: 2px;
+    background: var(--gold);
+    box-shadow: 0 0 12px rgba(201, 162, 75, 0.6);
+    transition: width .45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .brand:hover::after { width: 100%; }
 
   /* ---------- Hero band ---------- */
   .hero {
