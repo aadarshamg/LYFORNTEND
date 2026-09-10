@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Leyros Perfume — We’re Refining the Experience</title>
+<meta name="description" content="Leyros Perfume is undergoing a short upgrade. Continue shopping your favourite Leyros fragrances at our official store.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050505;
+    --ink: #f4f1ea;
+    --muted: #9c958a;
+    --line: rgba(244, 241, 234, 0.14);
+    --gold: #c9a24b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--gold); color: #000; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+
+  /* ---------- Layout ---------- */
+  .stage {
+    position: relative;
+    min-height: 100svh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 6vw, 5rem) clamp(1.5rem, 6vw, 6rem);
+    isolation: isolate;
+  }
+
+  /* Ambient background layers */
+  .bg-image {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(0.35) brightness(0.32) contrast(1.05);
+    opacity: 0;
+    animation: slowReveal 2.4s ease forwards;
+    transform: scale(1.06);
+  }
+  .bg-tint {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+      linear-gradient(180deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.78) 55%, rgba(5,5,5,0.96) 100%);
+  }
+  .bg-glow {
+    position: absolute;
+    z-index: -1;
+    top: -22vh;
+    left: 50%;
+    width: min(120vw, 1100px);
+    height: min(120vw, 1100px);
+    transform: translateX(-50%);
+    background: radial-gradient(circle at 50% 40%,
+      rgba(201, 162, 75, 0.16) 0%,
+      rgba(201, 162, 75, 0.06) 30%,
+      rgba(201, 162, 75, 0) 62%);
+    pointer-events: none;
+    animation: breathe 11s ease-in-out infinite;
+  }
+
+  .grid {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.75rem, 7vw, 5.5rem);
+    align-items: center;
+  }
+
+  /* ---------- Text column ---------- */
+  .brand {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-decoration: none;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+  }
+  .brand .crest {
+    font-size: 0.58rem;
+    letter-spacing: 0.42em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .brand .word {
+    font-size: 1.05rem;
+    letter-spacing: 0.34em;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-weight: 300;
+    font-size: clamp(2.6rem, 6.2vw, 4.6rem);
+    line-height: 1.06;
+    letter-spacing: 0.005em;
+    margin: 0 0 1.6rem;
+    color: var(--ink);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .sub {
+    font-size: clamp(1rem, 1.5vw, 1.12rem);
+    color: rgba(244, 241, 234, 0.82);
+    max-width: 34ch;
+    margin: 0 0 1.4rem;
+  }
+  .shopping {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 40ch;
+    margin: 0 0 2.4rem;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1.05rem 2.5rem;
+    background: var(--ink);
+    color: #050505;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    transition: background .4s ease, color .4s ease, transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+  }
+  .cta svg { width: 13px; height: 13px; transition: transform .4s ease; }
+  .cta:hover {
+    background: transparent;
+    color: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -18px rgba(201, 162, 75, 0.5);
+  }
+  .cta:hover svg { transform: translateX(4px); }
+  .cta:focus-visible {
+    outline: 1px solid var(--gold);
+    outline-offset: 4px;
+  }
+
+  .aside-note {
+    margin: 1.15rem 0 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  .footer-line {
+    margin-top: clamp(2.75rem, 6vw, 4rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer-line a { text-decoration: none; transition: color .3s ease; }
+  .footer-line a:hover { color: var(--ink); }
+
+  /* ---------- Visual column ---------- */
+  .visual {
+    position: relative;
+    justify-self: center;
+    width: 100%;
+    max-width: 420px;
+  }
+  .visual .frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: rgba(244, 241, 234, 0.02);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.9);
+  }
+  .visual .frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: floaty 9s ease-in-out infinite;
+  }
+  .visual .cap {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    padding: 0.75rem 1.1rem;
+    background: rgba(5, 5, 5, 0.62);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    font-size: 0.56rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(244, 241, 234, 0.82);
+  }
+  .visual .halo {
+    position: absolute;
+    inset: -18% -14% -22% -18%;
+    z-index: -1;
+    background: radial-gradient(ellipse at 60% 40%, rgba(201,162,75,0.18), rgba(201,162,75,0) 65%);
+    filter: blur(10px);
+  }
+
+  @media (min-width: 900px) {
+    .grid {
+      grid-template-columns: 1.05fr 0.85fr;
+    }
+    .visual { justify-self: end; max-width: 440px; }
+  }
+
+  /* ---------- Entrance animation ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .d1 { animation-delay: .15s; }
+  .d2 { animation-delay: .30s; }
+  .d3 { animation-delay: .45s; }
+  .d4 { animation-delay: .60s; }
+  .d5 { animation-delay: .75s; }
+  .d6 { animation-delay: .90s; }
+  .d7 { animation-delay: 1.05s; }
+  .reveal-visual {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+    animation: fadeUp 1.3s cubic-bezier(0.22, 1, 0.36, 1) .35s forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes slowReveal {
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.75; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+    .reveal, .reveal-visual { opacity: 1; transform: none; }
+    .bg-image { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<main class="stage">
+  <div class="bg-image" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkyLzr_tl-5SRA3mM1kq_U2pyVFRH4BM-8NSSxScLJm6RfaVzb9ZztEt0PvMAiYzYVEUm6gpgHgMtJn6ddJ70NWNOqzyovndvXFkAY-t7y-wngiJ9dcAvuokMXiA4TzngX_0XDJoKtj-afHI03wb0D-mvTS_dkdKXmRMqap0zMYLs3Rzaf8IXua5L8j1dUK3Sm2vce6MKuAPg6O0LGOIH7zqPtWna8g8qKlgvn4ULPT_JgntEn_sxx');"></div>
+  <div class="bg-tint"></div>
+  <div class="bg-glow"></div>
+
+  <div class="grid">
+    <!-- Text -->
+    <section>
+      <a class="brand reveal d1" href="https://www.leyrosperfume.com/">
+        <span class="crest">✦ Leyros ✦</span>
+        <span class="word">Leyros Perfume</span>
+      </a>
+
+      <p class="eyebrow reveal d2">Maison Notice</p>
+
+      <h1 class="reveal d3">We’re Refining <em>the Experience.</em></h1>
+
+      <p class="sub reveal d4">
+        Our website is currently undergoing a little upgrade to bring you a better Leyros experience.
+      </p>
+
+      <p class="shopping reveal d5">
+        In the meantime, you can continue shopping your favourite Leyros fragrances from our official store.
+      </p>
+
+      <div class="reveal d6">
+        <a class="cta" href="https://www.leyrosperfume.com/" target="_blank" rel="noopener">
+          Shop Leyros Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <p class="aside-note">Your favourites are still just a click away.</p>
+      </div>
+
+      <div class="footer-line reveal d7">
+        <span>© 2026 Leyros Perfume</span>
+        <a href="mailto:support@leyrosperfume.com">support@leyrosperfume.com</a>
+      </div>
+    </section>
+
+    <!-- Visual -->
+    <aside class="visual reveal-visual" aria-hidden="true">
+      <span class="halo"></span>
+      <div class="frame">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGi00QJ0nmidZU_xUjc3pWFhRo1tyeOkHjQ3x861IQW2QTkWwfWHTxZWnnaUNJtpP6VvRd-bDsaRcOQilj1ELAhnht0yxn7FtkvE4qyBy1RbEawdqRTZ5QbZrheeSyu0QFVBlSgbr_rcjUcUu-Px9lhUlThAGsOUg-Mo6HNRLSZucXwLsfPAidzFqvjTsxxGGKVV8YpGJuKkuawGxEV0IlwCfbZM1l38geiIzxRizElZ_J_stJwA8y" alt="Leyros extrait de parfum flacon">
+        <span class="cap">Extrait de Parfum · Hand-filled</span>
+      </div>
+    </aside>
+  </div>
+</main>
+</body>
+</html>
