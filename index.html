@@ -33,8 +33,8 @@
   ::-webkit-scrollbar { width: 0; height: 0; }
   a { color: inherit; text-decoration: none; }
 
-  /* ---------- Full-screen video + veils ---------- */
-  .bg-video {
+  /* ---------- Full-screen photo + veils ---------- */
+  .bg-photo {
     position: fixed;
     inset: 0;
     z-index: -3;
@@ -42,8 +42,8 @@
     height: 100vh;
     height: 100svh;
     object-fit: cover;
-    object-position: center 35%;
-    filter: brightness(0.82) contrast(1.03) saturate(1.03);
+    object-position: center 40%;
+    filter: brightness(0.68) contrast(1.04) saturate(0.98);
     opacity: 0;
     transform: scale(1.03);
     animation: slowReveal 2.8s ease forwards;
@@ -53,8 +53,9 @@
     inset: 0;
     z-index: -2;
     background:
-      linear-gradient(100deg, rgba(4,4,4,0.82) 0%, rgba(4,4,4,0.34) 46%, rgba(4,4,4,0.12) 66%, rgba(4,4,4,0.5) 100%),
-      linear-gradient(0deg, rgba(4,4,4,0.72) 0%, rgba(4,4,4,0.05) 34%, rgba(4,4,4,0.28) 100%);
+      linear-gradient(100deg, rgba(4,4,4,0.76) 0%, rgba(4,4,4,0.36) 46%, rgba(4,4,4,0.18) 66%, rgba(4,4,4,0.48) 100%),
+      linear-gradient(0deg, rgba(4,4,4,0.68) 0%, rgba(4,4,4,0.18) 34%, rgba(4,4,4,0.38) 100%),
+      radial-gradient(120% 90% at 20% 100%, rgba(4,4,4,0.4) 0%, rgba(4,4,4,0) 60%);
   }
   .grain {
     position: fixed;
@@ -149,14 +150,22 @@
 
   .support {
     flex-shrink: 0;
-    width: min(38ch, 100%);
-    padding-bottom: 0.4rem;
-    text-shadow: 0 1px 24px rgba(0, 0, 0, 0.5);
+    width: min(34ch, 100%);
+    padding: 1.7rem 1.9rem 1.9rem;
+    border-radius: 22px;
+    background: rgba(5, 5, 5, 0.46);
+    border: 1px solid rgba(244, 241, 234, 0.14);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 24px 60px -24px rgba(0, 0, 0, 0.65);
   }
   .sub {
     font-size: clamp(0.98rem, 1.3vw, 1.1rem);
-    color: rgba(244, 241, 234, 0.9);
+    color: rgba(244, 241, 234, 0.94);
     margin: 0 0 1.1rem;
+    text-shadow: 0 1px 20px rgba(0, 0, 0, 0.4);
   }
   .shopping {
     font-size: 0.88rem;
@@ -310,15 +319,12 @@
       transition-duration: 0.001ms !important;
     }
     .a { opacity: 1; transform: none; }
-    .bg-video { opacity: 1; transform: none; }
+    .bg-photo { opacity: 1; transform: none; }
   }
 </style>
 </head>
 <body>
-<video class="bg-video" autoplay muted loop playsinline preload="auto"
-       poster="https://lh3.googleusercontent.com/aida-public/AB6AXuBkyLzr_tl-5SRA3mM1kq_U2pyVFRH4BM-8NSSxScLJm6RfaVzb9ZztEt0PvMAiYzYVEUm6gpgHgMtJn6ddJ70NWNOqzyovndvXFkAY-t7y-wngiJ9dcAvuokMXiA4TzngX_0XDJoKtj-afHI03wb0D-mvTS_dkdKXmRMqap0zMYLs3Rzaf8IXua5L8j1dUK3Sm2vce6MKuAPg6O0LGOIH7zqPtWna8g8qKlgvn4ULPT_JgntEn_sxx">
-  <source src="video.mp4" type="video/mp4">
-</video>
+<img class="bg-photo" src="background.png" alt="" aria-hidden="true">
 <div class="veil"></div>
 <div class="grain"></div>
 <div class="frame" aria-hidden="true"></div>
